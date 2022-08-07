@@ -10,28 +10,22 @@ import babel from "rollup-plugin-babel";
 // import { terser } from 'rollup-plugin-terser';
 //terser 压缩代码
 
-import pkg from './package.json'
+//预览
+import htmlTemplate from "rollup-plugin-generate-html-template";
+import livereload from "rollup-plugin-livereload";
+import serve from "rollup-plugin-serve";
+import replace from "rollup-plugin-replace";
+import clear from "rollup-plugin-clear";
+//预览
+
 const resolve = (p) => path.resolve(__dirname, p);
 
 export default {
-  input: resolve("packages/index.ts"),
-  output: [
-    {
-      file: resolve("lib/index.js"),
-      format: "cjs",
-      name: pkg.name
-    },
-    {
-      file: resolve("lib/index.esm.js"),
-      format: "es",
-      name: pkg.name
-    },
-    {
-      file: resolve("lib/index.umd.js"),
-      format: "umd",
-      name: pkg.name //umd 模块 必须给name
-    },
-  ],
+  input: resolve("examples/index.tsx"),
+  output: {
+    file: "dist/main.js",
+    format: "cjs",
+  },
   plugins: [
     commonjs(),
     rollupResolve({
@@ -43,10 +37,26 @@ export default {
     typescript(),
     babel({
       exclude: "node_modules/**",
-      extensions: [".ts", ".tsx"],//需要手动配置后缀，不然文件ts文件不会被转成es5
+      extensions: [".ts", ".tsx"], //需要手动配置后缀，不然文件ts文件不会被转成es5
     }),
-    // terser()
+    clear({
+      targets: ["dist"],
+    }),
+    htmlTemplate({
+      template: "public/index.html",
+      target: "dist/index.html",
+    }),
+    serve("dist"),
+    livereload("examples"),
+    replace({
+      preventAssignment: true,
+      "process.env.NODE_ENV": JSON.stringify("production"), // 否则会报：process is not defined的错
+    }),
+    // terser(),
   ],
-  // 指出应将哪些模块视为外部模块 就不会被打包
-  external: ['react','react-dom','lodash']
+  external: [
+    {
+      includeDependencies: true,
+    },
+  ], // 项目中引用的第三方库
 };
