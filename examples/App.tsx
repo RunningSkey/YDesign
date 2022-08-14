@@ -1,11 +1,13 @@
 import React from "react";
-import { Button } from "../lib/index";
+import { Button } from "../lib/es";
+import style from './style.less';
 
 function App() {
   return (
-    <div className="App">
+    <div className={style.App}>
       <header className="App-header">header</header>
-      <Button text="1111"></Button>
+      <Button type="primary">primary</Button>
+      <Button>default</Button>
     </div>
   );
 }
