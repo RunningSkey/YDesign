@@ -1,14 +1,14 @@
 import React from "react";
 import classnames from "classnames";
 import './index.less';
+import { PREFIX } from './../_util/constants';
 
-const prefix = 'y';
 
-export default (props: {
+const Button = (props: {
   children: React.ReactNode;
   type?: "default" | "primary";
 }) => {
-  const cName = `${prefix}-button`;
+  const cName = `${PREFIX}-btn`;
   return (
     <button
       className={classnames(cName, cName + '-' + (props.type || "default"))}
@@ -17,3 +17,5 @@ export default (props: {
     </button>
   );
 };
+
+export default Button

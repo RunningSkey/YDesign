@@ -1,14 +1,20 @@
-.y-button{
+@import '../style/variables.less';
+
+@btn-prefix-cls: ~'@{prefix}-btn';
+
+.@{btn-prefix-cls} {
   position: relative;
   display: inline-block;
   font-weight: 400;
+
   white-space: nowrap;
   text-align: center;
   background-image: none;
+
   border: 1px solid transparent;
   box-shadow: 0 2px #00000004;
   cursor: pointer;
-  transition: all .3s cubic-bezier(.645,.045,.355,1);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   user-select: none;
   touch-action: manipulation;
   height: 32px;
@@ -18,10 +24,14 @@
   color: #000000d9;
   border-color: #d9d9d9;
   background: #fff;
-  &-primary{
+
+  &-primary {
+
+    
     color: #fff;
     border-color: #1890ff;
     background: #1890ff;
+
     text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
     box-shadow: 0 2px #0000000b;
   }
