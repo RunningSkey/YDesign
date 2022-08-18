@@ -11,6 +11,9 @@
     "lint:js": "eslint --ext='.ts,.tsx,.jsx,.js' --fix",
     "lint:style": "stylelint --fix \"**/*.less\""
   },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
   "lint-staged": {
     "**/**.{js,jsx,json,md,ts,tsx}": [
       "prettier --write",
