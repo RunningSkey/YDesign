@@ -4,3 +4,4 @@ dist
 .eslintrc.js
 rollup.config*
 **/*.less
+lib
