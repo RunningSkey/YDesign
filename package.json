@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:pro": "rollup -c",
-    "dev": "rollup -wc rollup.config.dev.js",
+    "dev": "rollup -wc rollup.config.dev.js --environment NODE_ENV:development",
     "prepare": "husky install",
     "lint:js": "eslint --ext='.ts,.tsx,.jsx,.js' --fix",
     "lint:style": "stylelint --fix \"**/*.less\""

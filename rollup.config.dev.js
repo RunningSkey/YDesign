@@ -24,11 +24,13 @@ import serve from 'rollup-plugin-serve'; //
 
 export default {
   input: resolve('examples/index.tsx'), //
-  output: {
-    //
-    file: 'dist/main.js', //
-    format: 'cjs', //
-  }, //
+  output: [
+    {
+      //
+      file: 'dist/main.js', //
+      format: 'umd', //
+    },
+  ], //
   plugins: [
     clear({
       targets: ['dist'], //
@@ -49,20 +51,19 @@ export default {
     }),
     //
     postcss({
-      plugins: [autoprefixer(), cssnanoPlugin()],
-      modules: true, // 可以使用 import style from './style.less';
+      // plugins: [autoprefixer(), cssnanoPlugin()],
+      // modules: true, // 可以使用 import style from './style.less';
+      // extract: true,
     }),
+    nodeResolve(),
     commonjs(),
-    nodeResolve({
-      extensions: ['.ts', '.tsx'],
-    }),
     typescript(),
     babel({
       exclude: 'node_modules/**',
       extensions: ['.ts', '.tsx'], //需要手动配置后缀，不然文件ts文件不会被转成es5
-      babelHelpers: 'runtime',
+      // babelHelpers: 'runtime',
     }),
-    terser(),
+    // terser(),
   ],
   // 指出应将哪些模块视为外部模块 就不会被打包
   // external: ["react", "react-dom"], 生产或开发的时候需要打包进去

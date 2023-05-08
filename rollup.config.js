@@ -20,21 +20,21 @@ const resolve = (p) => path.resolve(__dirname, p);
 export default {
   input: resolve('packages/index.ts'),
   output: [
-    {
-      file: resolve('lib/cjs/index.js'),
-      format: 'cjs',
-      name: pkg.name,
-    },
+    // {
+    //   file: resolve('lib/cjs/index.js'),
+    //   format: 'cjs',
+    //   name: pkg.name,
+    // },
     {
       file: resolve('lib/es/index.js'),
       format: 'es',
       name: pkg.name,
     },
-    {
-      file: resolve('lib/umd/index.js'),
-      format: 'umd',
-      name: pkg.name, //umd 模块 必须给name
-    },
+    // {
+    //   file: resolve('lib/umd/index.js'),
+    //   format: 'umd',
+    //   name: pkg.name, //umd 模块 必须给name
+    // },
   ],
   plugins: [
     clear({
@@ -56,5 +56,5 @@ export default {
     // terser(),
   ],
   // 指出应将哪些模块视为外部模块 就不会被打包
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'antd'],
 };

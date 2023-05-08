@@ -12,12 +12,12 @@
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
+    // "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
     "allowJs": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "strict": true
+    "strict": false
   },
   "include": ["packages/**/*", "typings.d.ts", "examples/**/*"],
   "exclude": ["node_modules"]

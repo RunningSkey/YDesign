@@ -1,11 +1,8 @@
+import Button from './Button/Button';
+import SortTable from './SortTable/index';
 
-import Button from "./Button/Button";
-
-const count = (x: number,y: number) => {
+const count = (x: number, y: number) => {
   return x + y;
-}
+};
 
-export {
-  count,
-  Button
-}
+export { count, Button, SortTable };
